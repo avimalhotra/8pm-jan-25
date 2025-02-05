@@ -47,11 +47,12 @@ body{ font: 16px/1.3 var(--ff); }
 .align-center{ align-items: center;}
 .justify-spacebet{ justify-content: space-between;}
 .gap-y-4{ row-gap: 4rem; }
+.img-resp{ max-width: 100%; height: auto; }
 
 
 
 /* layout */
-header{ background: #000; color: #fff; position: sticky; top: 0; }
+header{ background: #000; color: #fff; position: sticky; top: 0; z-index: 1; }
 h1{ font-size: 2rem; }
 h1 a{ color: inherit; line-height: 80px; display: inline-block;}
 nav{ margin-left: -20px;}
@@ -74,7 +75,20 @@ h2{ font-size: 72px; line-height: 0.833; border-bottom: 10px solid;}
 .feature p{ font-size: 14px; font-weight: 100; line-height: 1.57;} 
 
 
-.wrap-4{ background: #fff; color: var(--red); font-size: 36px; text-align: center; line-height: 10rem; }
+.wrap-4{ background: #fff; color: var(--red); font-size: 36px; text-align: center; line-height: 10rem;}
+
+
+.wrap-5{ background: #ebebeb; color: #363636; padding: 100px 0;}
+.wrap-5 .btn{ margin: 2rem 10px 4rem 0;}
+.wrap-5 .btn.active{ background: var(--red); color: #fff; border-color: var(--red); }
+.work{ position: relative; text-align: center; overflow: hidden;}
+.work .over{ background: #fff; position: absolute; inset: auto 0 -50px 0; padding: 20px 0; opacity: 0; transition: 400ms;}
+.work h3{ color: var(--red); font: 700 18px var(--ff); line-height: 40px;}
+.work p{ color: #898989; font: 100 14px var(--ff); line-height: 20px;}
+.work:hover .over{ opacity: 1; bottom: 0;}
+.seemore{ border: none; background: none; color: var(--red); font-size: 36px; margin-top: 2rem; }
+
+
 
 
 @media screen and (max-width:1220px){
@@ -114,6 +128,7 @@ h2{ font-size: 72px; line-height: 0.833; border-bottom: 10px solid;}
     .col-m-12{ grid-column: span 12;}
     .collapse{ display: none;}
     .menu{ display:inline-block;}
+    .wrap-5 .btn{margin-right: 6px;}
 }
 
 @media screen and (max-width:460px){
@@ -130,4 +145,5 @@ h2{ font-size: 72px; line-height: 0.833; border-bottom: 10px solid;}
     .col-p-11{ grid-column: span 11;}
     .col-p-12{ grid-column: span 12;}
     .banner .flex{ flex-flow: column;}
+    .work img{ width: 100%; }
 }
