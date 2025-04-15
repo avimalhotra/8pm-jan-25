@@ -62,8 +62,10 @@ nav li{ margin: 0 10px;}
 nav a{ display: block; color: #fff; padding: 0 10px; line-height: 80px;}
 .btn{ font: 16px var(--ff); color: var(--red); background: none; width: 90px; height: 35px; border: 2px solid; border-radius: 10px;}
 .menu{ display: none; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);}
-.menu span{ display: block; height: 2px; background: var(--red); margin: 6px 10px;}
-
+.menu span{ display: block; height: 2px; background: var(--red); margin: 6px 10px; transition: 500ms; transform-origin: right center;}
+.menu.active span:nth-child(1){ transform: rotate(-14deg);}
+.menu.active span:nth-child(2){ opacity: 0; }
+.menu.active span:nth-child(3){ transform: rotate(14deg);}
 
 .banner{ background: #666; color: #fff; padding: 20rem 0;}
 .banner button{ border: none; background: none; color: inherit; font-size: 10rem; margin-right: 40px;}
@@ -89,6 +91,7 @@ h2{ font-size: 72px; line-height: 0.833; border-bottom: 10px solid;}
 .work p{ color: #898989; font: 100 14px var(--ff); line-height: 20px;}
 .work:hover .over{ opacity: 1; bottom: 0;}
 .seemore{ border: none; background: none; color: var(--red); font-size: 36px; margin-top: 2rem; }
+.hidden{display: none;}
 
 
 .wrap-6{ background: #666; color: #fff; padding: 4rem 0 2rem; text-align: center;}
@@ -111,7 +114,8 @@ h2{ font-size: 72px; line-height: 0.833; border-bottom: 10px solid;}
 .caption{ margin: 50px 0 0 100px; }
 .caption h3{ font-size: 18px; color: var(--red); margin-bottom: 6px;}
 .caption small{ font: 100 14px var(--ff) }
-.caption p{ font: 100 14px/22px var(--ff); margin-top: 2rem; }
+.caption p{ font: 100 14px/22px var(--ff); margin-top: 2rem;}
+.all:nth-child(4),.all:nth-child(5),.all:nth-child(6){ display: none;}
 
 
 .wrap-8{ background: #666; color: #fff; text-align: center; padding: 85px 0 65px;}
@@ -132,9 +136,9 @@ h2{ font-size: 72px; line-height: 0.833; border-bottom: 10px solid;}
 .accordion a span{ margin-right: 25px; }
 .accordion a::after{ content: '+'; float: right;}
 .accordion p{ font: 100 14px/22px var(--ff); color: #363636; margin: 20px; display: none; }
-.accordion li.active a{ color: var(--red); }
-.accordion li.active a::after{ content: '-';}
-.accordion li.active p{ display: block;}
+.accordion li a.active{ color: var(--red); }
+.accordion li a.active::after{ content: '-';}
+.accordion li:first-child p{ display: block;}
 
 
 .wrap-10{ background: var(--red);  padding: 23px 0 22px;}
@@ -161,6 +165,7 @@ address{ font: 100 16px/30px var(--ff); color: #898989; margin: 1rem 0 0 0;}
 
 
 .wrap-13{ background: #252525; color: #fff; text-align: center; padding: 50px 0; }
+.top{ color: var(--red); font-size: 20px; border: none; background: none; }
 
 
 @media screen and (max-width:1220px){
@@ -202,9 +207,12 @@ address{ font: 100 16px/30px var(--ff); color: #898989; margin: 1rem 0 0 0;}
     .col-m-10{ grid-column: span 10;}
     .col-m-11{ grid-column: span 11;}
     .col-m-12{ grid-column: span 12;}
-    .collapse{ display: none;}
+    .collapse{ display: none; position: absolute; left: 0; right: 0; top: 80px; background: #000; padding: 1rem;}
     .menu{ display:inline-block;}
     .wrap-5 .btn{margin-right: 6px;}
+    .collapse .flex{ flex-flow: column; border-top: 1px solid #333; }
+    nav{ width: 100%; text-align: right;}
+    nav a{ line-height: 40px;}
 }
 
 @media screen and (max-width:460px){
