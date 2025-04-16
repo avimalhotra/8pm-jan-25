@@ -7,6 +7,7 @@
     <link rel="icon" href="img/jack.webp">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.css">
 </head>
 <body id="home">
     <header>
@@ -207,25 +208,41 @@
                 <div class="col-2"></div>
                 <div class="col-8 col-t-12">
                     <div class="reviews">
-                        <div class="review active">
+                        <div class="review">
                             <blockquote>
                                 <p><q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio deleniti quas corrupti ipsa voluptatum tempora fugiat ratione</q></p>
                                 <figure>
                                     <img src="img/jack.webp" alt="jack" width="70" height="70" loading="lazy">
-                                    <figcaption>JACK EFRON</figcaption>
+                                    <figcaption>JACK EFRON 1</figcaption>
                                 </figure>
                             </blockquote>
                         </div>
-                        <div class="review">2</div>
-                        <div class="review">3</div>
-                        <div class="pager">
-                            <ul class="flex justify-center">
-                                <li><a href="" class="active"></a></li>
-                                <li><a href=""></a></li>
-                                <li><a href=""></a></li>
-                            </ul>
+                        <div class="review">
+                            <blockquote>
+                                <p><q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio deleniti quas corrupti ipsa voluptatum tempora fugiat ratione</q></p>
+                                <figure>
+                                    <img src="img/jack.webp" alt="jack" width="70" height="70" loading="lazy">
+                                    <figcaption>JACK EFRON 2</figcaption>
+                                </figure>
+                            </blockquote>
+                        </div>
+                        <div class="review">
+                            <blockquote>
+                                <p><q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio deleniti quas corrupti ipsa voluptatum tempora fugiat ratione</q></p>
+                                <figure>
+                                    <img src="img/jack.webp" alt="jack" width="70" height="70" loading="lazy">
+                                    <figcaption>JACK EFRON 3</figcaption>
+                                </figure>
+                            </blockquote>
                         </div>
                     </div>
+                    <!-- <div class="pager">
+                        <ul class="flex justify-center">
+                            <li><a href="" class="active"></a></li>
+                            <li><a href=""></a></li>
+                            <li><a href=""></a></li>
+                        </ul>
+                    </div> -->
                 </div>
                 <div class="col-2"></div>
             </div>
@@ -466,7 +483,18 @@
             <button class="top"><span class="fa fa-chevron-up"></span></button>
         </div>
     </footer> 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>      
+    <div class="hiddenform">
+        <button class="close" aria-label="Close"><span class="fa fa-times"></span></button>
+        <form action="">
+            <label>Name: <input type="text" required></label>
+            <label>Email: <input type="email" required></label>
+            <label>Password: <input type="password" required></label>
+            <button class="btn">Sign Up</button>
+        </form>
+    </div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>     
+<script src="https://cdn.jsdelivr.net/npm/bxslider@4.2.17/dist/jquery.bxslider.min.js"></script>
+
 <script>
 $(function(){
     $(".wrap-5 .btn").click(function(){
@@ -526,8 +554,60 @@ $(function(){
             $(".collapse").slideUp();
             $("header .menu").removeClass("active");
         })
-    }
+    };
 
+
+    $(".signup").click(function(){
+        $("body").append(`<div class="overlay"></div>`);
+        $("body").append(`<div class="popup"></div>`);
+        $("body").css({"overflow-y":"hidden"});
+        const form=$(".hiddenform").html();
+        $(".popup").append(form);
+        $(".popup input[type='text']").trigger("focus");
+        $(".popup .close").click(function(){
+            $(".popup,.overlay").remove();
+            $("body").css({"overflow-y":"auto"});
+        });
+        $(window).keyup(function(e){
+            if(e.keyCode==27){
+                $(".popup,.overlay").remove();
+                $("body").css({"overflow-y":"auto"});
+            }
+        })
+        
+    });
+
+    $(".banner button, .banner a").click(function(e){
+        e.preventDefault();
+        $("body").append(`<div class="overlay"></div>`);
+        $("body").append(`<div class="popup"></div>`);
+        $("body").css({"overflow-y":"hidden"});
+        $(".popup").append(`<button class="close" aria-label="Close"><span class="fa fa-times"></span></button> <iframe width="560" height="315" src="https://www.youtube.com/embed/n0iBCQklw1A?si=OA9C1VWm0vvA10LR" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
+
+        $(".popup .close").click(function(){
+            $(".popup,.overlay").remove();
+            $("body").css({"overflow-y":"auto"});
+        });
+        $(window).keyup(function(e){
+            if(e.keyCode==27){
+                $(".popup,.overlay").remove();
+                $("body").css({"overflow-y":"auto"});
+            }
+        })
+
+    });
+
+
+
+    $(".reviews").bxSlider({
+        controls:false,
+        auto:true,
+        pause:5000,
+        autoHover:true
+    });
+    
+
+   
 
 
 });        
